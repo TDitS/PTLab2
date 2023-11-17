@@ -1,66 +1,118 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Лабораторная 2 по дисциплине "Технологии программирования"
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+___Цель___  
+Изучение фреймворка MVC
 
-## About Laravel
+___Индивидуальное задание. Вариант №3___  
+Разработка: Магазин предметов роскоши  
+Расчетная процедура: В магазине имеется определенное количество товара каждого вида. После покупки количество товара уменьшается. Если товар закончился, его покупка должна быть невозможной.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Используемое программное обеспечение и компоненты:  
+```
+PHP 8.2.12 - язык сценариев общего назначения.
+PHP Storm - интегрированная среда разработки для PHP.
+Composer - пакетный менеджер для языка PHP.
+Laravel - бесплатный веб-фреймворк с открытым кодом, предназначенный для разработки с использованием архитектурной модели MVC.
+NodeJS - необходим для установок зависимостей проекта.
+Bootstrap - инструмент для создания веб-приложений.
+OpenServer - необходим для работы с базой данных.
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Используемые настройки:  
+```
+Настройки БД остались по умолчанию (хост, порт, логин, пароль)
+931 строка: раскомментировать в файле php.ini строку ";extension=fileinfo" - Необходимо для установки компонентов MVC
+945 строка: раскомментировать в файле php.ini строку ";extension=pdo_mysql" - Необходимо для осуществления миграции в БД
+963 строка: раскомментировать в файле php.ini строку ";extension=zip" - Необходимо для установки компонентов MVC
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Используемые команды: 
 
-## Learning Laravel
+___Установка composer на уровень рабочей сессии___  
+```
+php -r "readfile('https://getcomposer.org/installer');" | php 
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+___Установка всех компонентов laravel___  
+```
+php composer.phar global require laravel/installer
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+___Создание MVC-проекта с помощью laravel___  
+```
+php composer.phar create-project --prefer-dist laravel/laravel PTLab2
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+___Переход в папку с проектом___  
+```
+cd PTLab2
+```
 
-## Laravel Sponsors
+___Запуск локального сервера___  
+```
+php artisan serve
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+___Установки зависимостей проекта___  
+```
+npm i
+```
 
-### Premium Partners
+___Создание контроллера___  
+```
+php artisan make:controller MainController
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+___Создание модели с файлом миграции для формы___  
+```
+php artisan make:model OrderModel -m
+```
 
-## Contributing
+___Провести миграцию таблицы___  
+```
+php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+___Создание модели с файлом миграции для вывода данных магазина___  
+```
+php artisan make:model PriceModel -m
+```
 
-## Code of Conduct
+___Провести миграцию таблицы повторно___  
+```
+php artisan migrate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Выводы:
+В ходе лабораторной работы я научился работать с фрейморками MVC (Model-View-Controller). Для реализации лабораторной работы и изучения материала мной был выбран фреймворк "Laravel".Laravel предлагает множество удобных функций и инструментов для разработки веб-приложений.
 
-## Security Vulnerabilities
+# Лабораторная 3 по дисциплине "Технологии программирования"
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+___Цель___
+Изучение модульного тестирования приложений
 
-## License
+# В процессе разработки
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Используемые команды:  
+
+___Создание фабрики для проведения модульных тестов___  
+```
+php artisan make:factory PriceFactory --model=Price
+```
+
+Тестирование (В ПРОЦЕССЕ РАЗРАБОТКИ!!!!!!!!):
+
+___Создание функционального теста___  
+```
+php artisan make:test ViewTest
+```
+
+___Создание модульного теста___  
+```
+php artisan make:test ControllerTest --unit
+```
+
+___Запуск всех тестов___  
+```
+php artisan test
+```
