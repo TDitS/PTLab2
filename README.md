@@ -91,25 +91,23 @@ php artisan migrate
 ___Цель___  
 Изучение модульного тестирования приложений
 
-# В процессе разработки
-
 ### Используемые команды:  
 
-___Создание фабрики для проведения модульных тестов___  
+___Создание фабрики модели "PriceFactory"___  
 ```
-php artisan make:factory PriceFactory --model=Price
+php artisan make:factory PriceModelFactory --model=PriceModel
 ```
 
-Тестирование (В ПРОЦЕССЕ РАЗРАБОТКИ!!!!!!!!):
+___Создание сидов для проверки корректности созданной фабрики___  
+```
+php artisan db:seed
+```
 
-___Создание функционального теста___  
-```
-php artisan make:test ViewTest
-```
+### Тестирование:
 
 ___Создание модульного теста___  
 ```
-php artisan make:test ControllerTest --unit
+php artisan make:test ProjectTest --unit
 ```
 
 ___Запуск всех тестов___  
