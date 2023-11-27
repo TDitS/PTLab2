@@ -44,7 +44,7 @@ class ProjectTest extends TestCase
         $response->assertStatus(302);
     }
 
-    //Тест отображения несуществующего товара и его перенаправление на гл. страницу
+    //Тест отображения несуществующего товара
     public function testBuyProductWithNonExistentId() {
         $response = $this->get('/buy/99999999');
         $response->assertStatus(302);
